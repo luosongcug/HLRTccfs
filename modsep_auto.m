@@ -1,17 +1,20 @@
 function seisr = modsep_auto(f,p,t,dist,seis,flim,plim)
-
+% Please refer to Luo & Yao et al. (2023), JGR for more details.
+% 
+% Initial codes by Song Luo, songluo@ustc.edu.cn, released in 2023/8/2
+% 
 % Input:
-% f, 1-D row vector, frequency grid for searching
-% p, 1-D row vector, slowness grid for searching
-% t, 1-D row vector, time grid, acctually, only dt information is used
-% dist, 1-D row vector, contains of all interstation distance
-% seis, 2-D matrix in a size of [ntime, npair], contains the original ccfs of all
+% f: 1-D row vector, frequency grid for searching
+% p: 1-D row vector, slowness grid for searching
+% t: 1-D row vector, time grid, acctually, only dt information is used
+% dist: 1-D row vector, contains of all interstation distance
+% seis: 2-D matrix in a size of [ntime, npair], contains the original ccfs of all
 % station pairs
-% flim, defined frequency range of signals (Hz)
-% plim, defined slowness range of signals (s/km)
-
+% flim: defined frequency range of signals (Hz)
+% plim: defined slowness range of signals (s/km)
+%
 % Output:
-% seisr, 2-D matrix in a size of [ntime, npair], contains separated ccfs of all
+% seisr: 2-D matrix in a size of [ntime, npair], contains separated ccfs of all
 % station pairs
 
 
@@ -53,7 +56,7 @@ parfor(i=1:nf,10)
     
 end
 
-%% mode separation
+% mode separation
 p1 = plim(1); p2 = plim(2);
 f1 = flim(1); f2 = flim(2);
 
@@ -71,7 +74,7 @@ dispen_mute = dispen;
 dispen_mute(~bw) = 0+1i*0;
 
 
-%% dispen to seis
+% dispen to seis
 LLr = NaN(np,ntrace);
 for i=1:ntrace
     for j=1:np

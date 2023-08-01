@@ -1,3 +1,7 @@
+% This program is to suppress near zero-time lag noise in CCFs using HLRT.
+% Please refer to Luo & Yao et al. (2023), JGR for more details.
+% 
+% Initial codes by Song Luo, songluo@ustc.edu.cn, released in 2023/8/2
 
 %% Input parameters
 clc; clear;
