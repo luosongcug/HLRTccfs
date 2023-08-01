@@ -1,4 +1,3 @@
-
 function wigb(a,scal,x,z,amx)
 %WIGB: Plot seismic data using wiggles.
 %
