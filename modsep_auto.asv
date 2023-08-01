@@ -5,22 +5,18 @@ function seisr = modsep_auto(f,p,t,dist,seis,flim,plim)
 % p, 1-D row vector, slowness grid for searching
 % t, 1-D row vector, time grid, acctually, only dt information is used
 % dist, 1-D row vector, contains of all interstation distance
-% seis, 2-D matrix in a size of [ntime, npair], contains the original ccfs of all
-% station pairs
-% flim, defined frequency range of signals (Hz)
-% plim, defined slowness range of signals (s/km)
+% seis, 2-D matrix in a size of [ntime, npair], contains ccfs of all station pairs 
 
-% Output:
-% seisr, 2-D matrix in a size of [ntime, npair], contains separated ccfs of all
-% station pairs
+% flim = [f1 f2], frequency range to filter (Hz)
+% plim = [p1 p2], slowness range to filter (s/km)
 
-
-stackexnum = 5;  % external iteration number
-stackinnum = 5;  % internal iteration number
+stackexnum = 5;
+stackinnum = 5;
 
 fmn = f(1); fmx = f(end); df = f(2)-f(1); nf = length(f);
 pmn = p(1); pmx = p(end); dp = p(2)-p(1); np = length(p);
 tmn = t(1); tmx = t(end); dt = t(2)-t(1); nt = length(t);
+
 
 % sort the seismograms
 [dist,loc] = sort(dist);

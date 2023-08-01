@@ -27,7 +27,7 @@ p = pmn:dp:pmx; np = length(p);
 % define slowness range of signals
 plim = [1/5 1/0.1];  % s/km
 
-%% Loop for each virtual source (i.e., each station)
+%% loop for each virtual source (i.e., each station)
 for ist=1:nst
     
     filelist1 = dir([indir,'/ZZ_',stnm{ist},'-','*.SAC']);
@@ -70,21 +70,17 @@ for ist=1:nst
     % separate signals automatically
     seisr = modsep_auto(f,p,t,dist,seis,flim,plim);
     
-    % show the CCFs of one example station
-    if ist==1
-        figure;
-        subplot(1,2,1)
-        wigbcc(seis,3,dist,t);
-        xlabel('Time (s)');
-        ylabel('Distance (km)');
-        title('Original CCFs')
-        
-        subplot(1,2,2)
-        wigbcc(seisr,3,dist,t);
-        xlabel('Time (s)');
-        ylabel('Distance (km)');
-        title('Separated CCFs')
-    end
+    figure;
+    subplot(1,2,1)
+    wigbcc(seis,3,dist,t);
+    xlabel('Time (s)');
+    ylabel('Distance (km)');
+    title(')
+    
+    subplot(1,2,2)
+    wigbcc(seisr,3,dist,t);
+    xlabel('Time (s)');
+    ylabel('Distance (km)');
     
     % write data
     outdirsub = [outdir,'/',stnm{ist}];
@@ -111,8 +107,8 @@ end
 
 %% Merge CCFs from the pair of stations
 
-indir = 'CCFs_separated';
-outdir = 'CCFs_merged';
+indir = 'COR_Mianning_surface';
+outdir = 'COR_Mianning_surface_merged';
 if~exist(outdir,'dir')
     mkdir(outdir);
 end
@@ -132,9 +128,6 @@ clear coef;
 for i=1:nfileu
     disp([i,nfileu]);
     index = find(strcmp(filename,filenameu{i}));
-    if length(index)~=2
-        continue;
-    end
     filepath1 = [filelist(index(1)).folder,'/',filelist(index(1)).name];
     filepath2 = [filelist(index(2)).folder,'/',filelist(index(2)).name];
     
@@ -157,8 +150,8 @@ for i=1:nfileu
     writesac(sacfile);    
 end
 
-% figure('pos',[500 500 618 1000-618]);
-% hist(coef,50);
-% xlim([-1 1]);
-% xlabel('correlation coefficient');
-% ylabel('number of CCFs');
+figure('pos',[500 500 618 1000-618]);
+hist(coef,50);
+xlim([-1 1]);
+xlabel('correlation coefficient');
+ylabel('number of CCFs');
