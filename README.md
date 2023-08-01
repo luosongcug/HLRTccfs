@@ -15,7 +15,7 @@ The program consists of five MATLAB files and some example data:
 - modsep_auto.m: the main called function.
 - readsac.m: the function to read SAC data.
 - writesac.m: the function to write SAC data.
-- wigb.m: the function for plotting CCFs.
+- wigbcc.m: the function for plotting CCFs.
 - CCFs_original: the folder containing the original CCFs calculated from the Anninghe array (Luo et al., 2023).
 - CCFs_separated: the folder containing the separated CCFs after running this program.
 - sta.loc: the station list of the Anninghe array.
