@@ -20,9 +20,11 @@ The program consists of five MATLAB files and some example data:
 - CCFs_separated: the folder containing the separated CCFs after running this program.
 - sta.loc: the station list of the Anninghe array.
 - sta_ex.loc: an example station list for demonstration.
+- txt2sac_demo: the folder containing a demonstration that converts the CCFs from ASCII format to SAC format.
 
 There are three main steps to run this program:
 
+0. If you don't have CCFs in SAC format but rather in ASCII format, you can utilize the script located in the 'txt2sac_demo' folder to convert them into SAC format.
 1. In main_modsep_auto.m, run the section of "Input parameters". You need to set the directory containing the original CCFs (SAC format is required), the station list file to use, the output directory for separated CCFs, and the slowness grids and slowness range of desired signals.
 2. Run the "Loop for each virtual sources". In this step, the program will treat each station as a virtual source and use HLRT to separate the desired signals, which will then be stored in the subdirectory (named after the virtual source, i.e., the station name) of the output directory.
 3. Since a pair of CCFs has two stations, each of them can obtain the separated CCFs as a virtual source. Therefore, there will be two pairs of CCFs for each pair of stations. In theory, they should be equal, but in reality, due to terrain and heterogeneous media or other reasons, it is difficult for them to be exactly the same. Therefore, we adopt a method of judging the cross-correlation coefficient of the two pairs of CCFs. If the correlation coefficient of the two pairs is greater than 0.5, they are considered to be similar, and the average of the two is taken as the final CCF.
