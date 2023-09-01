@@ -19,7 +19,7 @@ for i=1:length(filelist)
     lonr = AAA(2,1); latr = AAA(2,2);
     t = AAA(3:end,1); ncfl = AAA(3:end,2); ncfr = AAA(3:end,3);
     t = [-flipud(t);t(2:end)]; ncf = [flipud(ncfl);ncfr(2:end)];
-    sacfile = sachd();
+    sacfile = readsac('sachd.sac');
     sacfile.FILENAME = [outdir,'/',filelist(i).name,'.SAC'];
     sacfile.NPTS = length(ncf);
     sacfile.DELTA = t(2)-t(1);
