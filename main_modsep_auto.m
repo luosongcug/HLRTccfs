@@ -72,7 +72,7 @@ for ist=1:nst
     seis = seis(:,loc);
 
     % separate signals automatically
-    [seisr,~] = modsep_auto(f,p,t,dist,seis,flim,plim);
+    [seisr,~,~,~,~] = modsep_auto(f,p,t,dist,seis,flim,plim);
     
     % show the CCFs of one example station
     if ist==1

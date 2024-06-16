@@ -16,11 +16,10 @@ function [seisr,dispenr,seisn,dispenn,dispen] = modsep_auto(f,p,t,dist,seis,flim
 % Output:
 % seisr: 2-D matrix in a size of [ntime, npair], contains separated ccfs (signal part) of all
 % station pairs
-% dispenr: 2-D matrix in a size of [np, nf], constains separated stacked energy (signal part)
+% dispenr: 2-D matrix in a size of [np, nf], constains stacked energy of
+% signal or noise
 % seisn: 2-D matrix in a size of [ntime, npair], contains separated ccfs (noise part) of all
 % station pairs
-% dispenn: 2-D matrix in a size of [np, nf], constains separated stacked energy (noise part)
-% dispenn: 2-D matrix in a size of [np, nf], constains stacked energy
 
 
 stackexnum = 5;  % external iteration number
