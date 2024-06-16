@@ -1,4 +1,4 @@
-function seisr = modsep_auto(f,p,t,dist,seis,flim,plim)
+function [seisr,dispenr] = modsep_auto(f,p,t,dist,seis,flim,plim)
 % Please refer to Luo & Yao et al. (2023), JGR for more details.
 % 
 % Initial codes by Song Luo, songluo@ustc.edu.cn, released in 2023/8/2
@@ -16,6 +16,8 @@ function seisr = modsep_auto(f,p,t,dist,seis,flim,plim)
 % Output:
 % seisr: 2-D matrix in a size of [ntime, npair], contains separated ccfs of all
 % station pairs
+% dispenr: 2-D matrix in a size of [np, nf], constains stacked energy of
+% signal or noise
 
 
 stackexnum = 5;  % external iteration number
@@ -92,6 +94,8 @@ end
 seisr = seisr';
 seisr = ifft(seisr,nt,'symmetric');
 seisr = real(seisr);
+
+dispenr = dispen_mute;
 
 
 function m = lsqr_precondition(LLf,d,stackexnum,stackinnum,tol)
